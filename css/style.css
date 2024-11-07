@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* ============================
+   ESTILOS GENERALES
+   ============================ */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+:root{
+    --regular: 400;
+    --bold: 600;
+    --size-text: 20px;
+    --size-title-1: 60px;
+    --size-title-2: 47px;
+    --size-title-3: 40px;
+    --color-blue: rgba(27, 66, 143, 1);
+    --color-black: rgba(0, 0, 0, 1);
+    --color-white: rgba(255, 255, 255, 1);
+    --color-red: rgba(157, 33, 33, 1);
+}
+
+/* ============================
+   HEADER
+   ============================ */
+
+header{
+
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+
+footer{
+
+}
+
+/* ============================
+   ESTILOS RESPONSIVE
+   ============================ */
+
+@media (width >= 768px) {
+
+}
