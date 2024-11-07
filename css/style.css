@@ -14,22 +14,36 @@
 :root{
     --regular: 400;
     --bold: 600;
+    --black: 900;
     --size-text: 20px;
     --size-title-1: 60px;
     --size-title-2: 47px;
     --size-title-3: 40px;
+    --size-text: 20px;
     --color-blue: rgba(27, 66, 143, 1);
     --color-black: rgba(0, 0, 0, 1);
     --color-white: rgba(255, 255, 255, 1);
     --color-red: rgba(157, 33, 33, 1);
+    --color-shadow: #02187E;
+    --color-gradient-1: #00D1D5;
+    --color-gradient-2: rgba(0, 209, 213, 0.12);
+    --color-gradient-3: rgba(1, 208, 213, 0);
     --contenedor-imagenes: #1B5F99;
     --contenedor-imagenesx3: #2982FF;
     --background-contenedor-violeta: #5829BF;
     --background-btn: #83C252;
+    --background-btn-hover: #cdf3b0;
     --background-btn-menu: #F39E46;
     --background-contenedor-amarillo: #EFB71E;
     --background-contenedor-footer1:#242424;
     --background-footer: #5E5E5D;
+
+}
+
+body {
+   display: grid;
+   grid-template-rows: auto 1fr auto; /* (altura automática, basada en el contenido). 1fr ocupa el espacio restante de la pantalla.*/
+   min-height: 100vh; 
 }
 
 /* ============================
@@ -37,7 +51,114 @@
    ============================ */
 
 header{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background: linear-gradient(180deg, var(--color-gradient-1) 0%,  var(--color-gradient-2) 87.91%,  var(--color-gradient-3) 100%);
+}
 
+/* ============================
+   LOGO
+   ============================ */
+.logo{
+   width: 150px;
+   height: 86px;
+}
+
+/* ============================
+   MENU HAMBURGUESA
+   ============================ */
+
+#boton-menu-hamburguesa{
+   margin: 20px;
+   border-radius: 50%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 34px;
+   border: 0;
+   background: transparent;
+   cursor: pointer;
+}
+
+
+#boton-menu-hamburguesa > div{
+   box-sizing: content-box;
+   background: var(--background-btn-menu);
+   height: 4px;
+   width: 100%;
+   border-radius: 100px;
+   transition: all 0.5s;
+   transform-origin: left;
+   border: 4px solid var(--color-white);
+   
+}
+
+.shadow{
+   box-shadow: 4px 5px 0px 0px var(--color-shadow);
+}
+
+.rotar-arriba {
+   transform: translateY(-5px) rotate(45deg);
+}
+
+.desaparecer {
+   opacity: 0;
+}
+
+.rotar-abajo {
+   transform: rotate(-45deg);
+}
+
+/* ============================
+   BOTONES
+   ============================ */
+
+.boton {
+   margin: 20px;
+   width: 200px;
+   height: 60px;
+   flex-shrink: 0;
+   border-radius: 111px;
+   border: 8px solid var(--color-white);
+   background-color: var(--background-btn);
+   cursor: pointer;
+}
+
+.btnAnimado {
+   transition: all 0.3s ease;
+}
+
+.btnAnimado:hover {
+   background-color: var(--background-btn-hover);
+   transform: scale(1.03);
+}
+
+.btnAnimado h4:hover {
+   color: var(--color-shadow);
+}
+
+.boton h4 {
+   margin: auto;
+   color: var(--color-white);
+   font-size: var(--size-text);
+   font-style: normal;
+   font-weight: var(--black);
+   line-height: 94.5%;
+}
+
+/* ============================
+   SECTION-1
+   ============================ */
+
+.section-1{
+   background-image: url('../img/background-1.png');
+   background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+   width: 100%;
+   height: 959px;
 }
 
 /* ============================
@@ -45,13 +166,10 @@ header{
    ============================ */
 
 footer{
-
+   background-color: #1B5F99;
 }
 
 /* ============================
    ESTILOS RESPONSIVE
    ============================ */
 
-@media (width >= 768px) {
-
-}
