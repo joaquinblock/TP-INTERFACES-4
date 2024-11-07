@@ -22,6 +22,14 @@
     --color-black: rgba(0, 0, 0, 1);
     --color-white: rgba(255, 255, 255, 1);
     --color-red: rgba(157, 33, 33, 1);
+    --contenedor-imagenes: #1B5F99;
+    --contenedor-imagenesx3: #2982FF;
+    --background-contenedor-violeta: #5829BF;
+    --background-btn: #83C252;
+    --background-btn-menu: #F39E46;
+    --background-contenedor-amarillo: #EFB71E;
+    --background-contenedor-footer1:#242424;
+    --background-footer: #5E5E5D;
 }
 
 /* ============================
