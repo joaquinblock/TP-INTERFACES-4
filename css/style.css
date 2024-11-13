@@ -177,6 +177,53 @@ header{
    overflow: hidden;
 }
 
+.parallax {
+   transition: transform 0.1s ease-out;
+   position: relative;
+   will-change: transform;
+}
+
+#numero-1{
+   position: absolute;
+   top: 507.28px;
+   left: 411px;
+   z-index: 2;
+}
+
+#numero-2{
+   position: absolute;
+   top: 406.04px;
+   left: 536px;
+   z-index: 1;
+}
+
+#numero-3{
+   position: absolute;
+   top: 338px;
+   left: 692.25px;
+}
+
+
+#sombra-1{
+   position: absolute;
+   top: 742px;
+   left: 474px;
+}
+
+#sombra-2{
+   position: absolute;
+   top: 707px;
+   left: 588px;
+}
+
+#sombra-3{
+   position: absolute;
+   top: 677px;
+   left: 704px;
+}
+
+
+
 #arbol-1{
    position: absolute;
    width: 560px;
