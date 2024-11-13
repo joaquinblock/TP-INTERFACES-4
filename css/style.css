@@ -44,35 +44,38 @@
 }
 
 body {
+   margin: auto;
+   max-width: 1280px;
    display: grid;
-   grid-template-rows: auto 1fr auto; /* (altura automática, basada en el contenido). 1fr ocupa el espacio restante de la pantalla.*/
+   grid-template-rows: 1fr auto; /* (altura automática, basada en el contenido). 1fr ocupa el espacio restante de la pantalla.*/
    min-height: 100vh; 
 }
 
-.contenedor-pagina{
-   width: 1280px;
-   height: 14778px;
-   position: relative;
-   margin: 0 auto; /* Centra el contenedor horizontalmente */
-   padding: 0; /* Elimina cualquier relleno adicional */
-  
-}
 
 /* ============================
    HEADER
    ============================ */
 
 header{
+   background: linear-gradient(180deg, var(--color-gradient-1) 0%,  var(--color-gradient-2) 88%,  var(--color-gradient-3) 100%);
+   position: fixed;
+   width: 1280px; 
+   z-index: 1000;
+}
+
+.header-container{
+   margin-inline: 80px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   background: linear-gradient(180deg, var(--color-gradient-1) 0%,  var(--color-gradient-2) 87.91%,  var(--color-gradient-3) 100%);
+   z-index: 10;
 }
 
 /* ============================
    LOGO
    ============================ */
-.logo{
+#logo-header{
+   margin-left: 100px;
    width: 150px;
    height: 86px;
 }
@@ -128,7 +131,6 @@ header{
    ============================ */
 
 .boton {
-   margin: 20px;
    width: 200px;
    height: 60px;
    flex-shrink: 0;
@@ -165,12 +167,146 @@ header{
    ============================ */
 
 .section-1{
+   position: relative;
    background-image: url('../img/background-1.png');
    background-size: cover;
    background-position: center; 
-   background-repeat: no-repeat;
+   background-repeat: repeat-x; 
    width: 100%;
    height: 959px;
+   overflow: hidden;
+}
+
+#arbol-1{
+   position: absolute;
+   width: 560px;
+   height: 867px;
+   top: -1px;
+   left: -153px;
+   z-index: 2;
+}
+
+#arbol-2{
+   position: absolute;
+   width: 434px;
+   height: 672px;
+   top: 106px;
+   left: 881px;
+   z-index: 4;
+}
+
+#arbol-3{
+   position: absolute;
+   width: 278px;
+   height: 430px;
+   top: 278px;
+   left: 1080px;
+   z-index: 2;
+}
+
+#logo-principal{
+   position: absolute;
+   width: 560px;
+   height: 320px;
+   top: 55px;
+   left: 360px;
+   z-index: 1;
+   transition: transform 0.1s ease, opacity 0.1s ease; /* Transiciones suaves */
+    
+}
+
+#piedra-right-1 {
+   position: absolute;
+   width: 113px;
+   height: 74px;
+   top: 737px;
+   left: 1072px;
+   z-index: 6;
+}
+
+#piedra-left-1{
+   position: absolute;
+   width: 59px;
+   height: 35px;
+   top: 786px;
+   left: 1041px;
+   gap: 0px;
+   opacity: 0px;
+   z-index: 7;
+}
+
+#piedra-left-2{
+   position: absolute;
+   width: 66px;
+   height: 56px;
+   top: 737px;
+   left: 1031px;
+   z-index: 5;
+}
+
+#piedra-right-2{
+   position: absolute;
+   width: 145px;
+   height: 78px;
+   top: 793px;
+   left: 129px;
+   z-index: 3;
+}
+
+#pasto-1{
+   position: absolute;
+   width: 249px;
+   height: 114px;
+   top: 717px;
+   left: 161px;
+   z-index: 1;
+}
+
+#pasto-2{
+   position: absolute;
+   width: 155px;
+   height: 102px;
+   top: 821px;
+   left: 197px;
+   z-index: 4;
+}
+
+#pasto-3{
+   position: absolute;
+   width: 244px;
+   height: 107px;
+   top: 662px;
+   left: 1080px;
+   z-index: 3;
+}
+
+#pasto-4{
+   position: absolute;
+   width: 191px;
+   height: 63px;
+   top: 630px;
+   left: 1028px;
+   z-index: 1;
+}
+
+.animacion-entrada {
+   view-timeline-name: --image;
+   view-timeline-axis: block;
+
+   animation-timeline: --image;
+   animation-name: show;
+}
+
+@keyframes show {
+   from {
+       opacity: 0;
+       scale: 25%
+   }
+
+   to {
+       opacity: 1;
+       scale: 100%;
+   }
 }
 
 /*----MAS AMIGOS, MAS DIVERSION-----*/
@@ -459,17 +595,19 @@ display: none; /* Chrome, Safari y Opera */
    width: 387px;
    height: 181px;
    position: absolute;
-
+   animation: moverNubeDerecha 20s linear infinite; /* Aplica la animación a cada nube */
 }
 
 .nube1-suscripcion{
    left:-56px;/* Coordenada X */
    top: 834px; /*13434 */
+   animation-duration: 30s; /* Duración específica para esta nube */
 }
 
 .nube2-suscripcion{
    left:962px;
    top:505px ;/*13175px;*/
+   animation: moverNubeIzquierda 30s linear infinite;
 }
 
 .nube3-suscripcion{
@@ -478,8 +616,7 @@ display: none; /* Chrome, Safari y Opera */
    left:794px;
    top:467px; /*13132px;*/
    position: absolute;
-   animation: parallax-nubes-suscripcion linear infinite;
-   animation-duration: 35s;
+   animation: moverNubeIzquierda 30s linear infinite;
 
 }
 
@@ -583,6 +720,26 @@ display: none; /* Chrome, Safari y Opera */
    1px 1px 0 white;  /* Simula el borde con sombra */
 
 }
+/* Animación para mover la nube hacia la izquierda */
+@keyframes moverNubeIzquierda {
+   0% {
+      transform: translateX(0); /* Posición inicial */
+   }
+   100% {
+      transform: translateX(-1280px); /* Mueve a la izquierda */
+   }
+}
+
+/* Animación para mover la nube hacia la derecha */
+@keyframes moverNubeDerecha {
+   0% {
+      transform: translateX(0); /* Posición inicial */
+   }
+   100% {
+      transform: translateX(1280px); /* Mueve a la derecha */
+   }
+}
+
 
 
 /* ============================
@@ -596,7 +753,7 @@ display: none; /* Chrome, Safari y Opera */
    background-color: var(--background-contenedor-footer1);
    display: flex;
    justify-content: center;
-   margin-top: 14185px;
+   top: 20777.5px;
 
 }
 
