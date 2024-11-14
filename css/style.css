@@ -360,7 +360,7 @@ header{
    position: relative;
    width: 1280px;
    height: 1157px;
-   top:14200px;
+   top:14259px;
    display: flex;
    justify-content: center;
 
@@ -412,7 +412,7 @@ header{
 /*----MAS AMIGOS, MAS DIVERSION-----*/
 .contenedor-mas-amigos{
    position: relative;
-   top:14200px;
+   top:14259px;
    height: 823px;
    width: 1280px;
    display: grid;
@@ -510,7 +510,7 @@ display: none; /* Chrome, Safari y Opera */
    width: 1280px;
    background-image: url('../img/Rectangle\ 25.png');
    display: flex;
-   top:14167px;
+   top:14260px;
 
 }
 
@@ -579,7 +579,7 @@ display: none; /* Chrome, Safari y Opera */
    position: relative;
    display: flex;
    flex-direction: row;
-   top:14170px;
+   top:14259px;
    border:2px solid red;
 
 }
@@ -625,7 +625,7 @@ display: none; /* Chrome, Safari y Opera */
    position: relative;
    height: 729px;
    width: 1280px;
-   top:14180px;
+   top:14262px;
    background-image: url('../img/455.png'); 
    overflow: hidden;
 }
@@ -645,7 +645,7 @@ display: none; /* Chrome, Safari y Opera */
 .contenedor-suscripcion{
    height: 1560px;
    width: 1280px;
-   top: 14185px;
+   top: 14262px;
    position: relative;
    background: linear-gradient(
          to top, 
@@ -656,6 +656,7 @@ display: none; /* Chrome, Safari y Opera */
    );
    margin: 0 auto; /* Centra dentro de la página */
    overflow: hidden;
+   border: 2px solid red;
 }
 .contenedor-pasto{
    height: 389px;
@@ -836,17 +837,18 @@ display: none; /* Chrome, Safari y Opera */
    ============================ */
 
 .contenedor-banner{
-   position: absolute;
+   position: relative;
    height: 80px;
    width: 1280px;
    background-color: var(--background-contenedor-footer1);
    display: flex;
    justify-content: center;
-   top: 20777.5px;
+   top: 14264px;
 
 }
 
 .contenedor-banner img{
+   position: absolute;
    width: 1080px;
 }
 
