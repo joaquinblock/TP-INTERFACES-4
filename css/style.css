@@ -369,6 +369,7 @@ header{
    position: absolute;
    z-index: 1000;
    bottom: 0;
+   transition: transform 0.1s ease-out; /* Transición suave para el efecto de movimiento */
    
 }
 
