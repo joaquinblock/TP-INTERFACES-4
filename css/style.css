@@ -51,6 +51,22 @@ body {
    min-height: 100vh; 
 }
 
+h3{
+   font-size: var(--size-title-3);
+}
+
+h2{
+   font-size: var(--size-title-2);
+}
+
+h1{
+   font-size: var(--size-title-1);
+}
+
+p{
+   font-size: var(--size-text);
+}
+
 
 /* ============================
    HEADER
@@ -166,13 +182,14 @@ header{
    SECTION-1
    ============================ */
 
+#background-1{
+   width: 100%;
+   height: 959px;
+}
+
 .section-1{
    position: relative;
-   background-image: url('../img/background-1.png');
-   background-size: cover;
-   background-position: center; 
-   background-repeat: repeat-x; 
-   width: 100%;
+   width: 1279px;
    height: 959px;
    overflow: hidden;
 }
@@ -336,25 +353,43 @@ header{
    z-index: 1;
 }
 
-.animacion-entrada {
-   view-timeline-name: --image;
-   view-timeline-axis: block;
 
-   animation-timeline: --image;
-   animation-name: show;
+/* ============================
+   SECTION-2
+   ============================ */
+
+.section-2{
+   position: relative;
+   width: 1279px;
+   overflow: hidden;
+   color: var(--color-blue);
 }
 
-@keyframes show {
-   from {
-       opacity: 0;
-       scale: 25%
-   }
-
-   to {
-       opacity: 1;
-       scale: 100%;
-   }
+#title-section-2{
+   position: absolute;
+   top: 55px;
+   left: 100px;
+   width: 508px;
+   height: 132px;
+   z-index: 1;
+   font-weight: var(--bold);
+   line-height: 44.41px;
+   text-align: left;
 }
+
+#p-section-2{
+   position: absolute;
+   font-weight: var(--regular);
+   line-height: 24px;
+   text-align: left;
+   top: 209px;
+   left: 100px;
+   width: 704px;
+   height: 154px;
+   text-align: justify;
+   z-index: 1;
+}
+
 /*--------- DESCUBRE EL JUEGO------------*/
 .contenedor-descubre-juego{
    position: relative;
@@ -428,7 +463,6 @@ header{
    left: 100px;
    top:70px;
    font-weight: var(--semi-bold);
-   font-size: var(--size-title-1);
    line-height: 94.5%;
 }
 
@@ -468,16 +502,6 @@ header{
    transform: translateY(0);
 }
 
-.contenedor-divs div h2{
-   font-size: var(--size-title-3);
-
-}
-
-
-.contenedor-divs div p{
-   font-size: var(--size-text);
-
-}
 
 #scroll-container {
    height: 400px; /* Ajusta la altura según tus necesidades */
@@ -521,7 +545,6 @@ display: none; /* Chrome, Safari y Opera */
    height: 171px;
    width: 802px;
    left:100px;
-   font-size: var(--size-title-1);
    color:white;
    top:200px;
 
@@ -593,7 +616,6 @@ display: none; /* Chrome, Safari y Opera */
 
 }
 .contenedor-efectos-3d h1{
-   font-size: var(--size-title-1);
    color:var(--color-title-1);
    font-weight: 600; /* Semi-bold */
    line-height: 94.5%;
@@ -604,7 +626,6 @@ display: none; /* Chrome, Safari y Opera */
 .contenedor-p-3d{
    width: 467px;
    height: 190px;
-   font-size: var(--size-text);
    line-height: 94.5%;
    left: 100px;
 
@@ -677,7 +698,6 @@ display: none; /* Chrome, Safari y Opera */
 }
 
 .titulo-suscripcion h1{
-   font-size: var(--size-title-1);
    font-weight: var(--semi-bold);
    line-height: 94.5%;
 }
@@ -738,7 +758,6 @@ display: none; /* Chrome, Safari y Opera */
 }
 
 .advertencias p{
-   font-size: var(--size-text);
    width: 578px;
    height: 95px;
    top:518px;
