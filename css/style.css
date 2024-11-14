@@ -177,6 +177,53 @@ header{
    overflow: hidden;
 }
 
+.parallax {
+   transition: transform 0.1s ease-out;
+   position: relative;
+   will-change: transform;
+}
+
+#numero-1{
+   position: absolute;
+   top: 507.28px;
+   left: 411px;
+   z-index: 2;
+}
+
+#numero-2{
+   position: absolute;
+   top: 406.04px;
+   left: 536px;
+   z-index: 1;
+}
+
+#numero-3{
+   position: absolute;
+   top: 338px;
+   left: 692.25px;
+}
+
+
+#sombra-1{
+   position: absolute;
+   top: 742px;
+   left: 474px;
+}
+
+#sombra-2{
+   position: absolute;
+   top: 707px;
+   left: 588px;
+}
+
+#sombra-3{
+   position: absolute;
+   top: 677px;
+   left: 704px;
+}
+
+
+
 #arbol-1{
    position: absolute;
    width: 560px;
@@ -308,11 +355,64 @@ header{
        scale: 100%;
    }
 }
+/*--------- DESCUBRE EL JUEGO------------*/
+.contenedor-descubre-juego{
+   position: relative;
+   width: 1280px;
+   height: 1157px;
+   top:14200px;
+   display: flex;
+   justify-content: center;
+
+}
+.fondoDescubre{
+   position: absolute;
+   z-index: 1000;
+   bottom: 0;
+   
+}
+
+.contenedor-titulo-descubre{
+   position: absolute;
+   width: 950px;
+   height: 153px;
+   left:165px;
+   top:200px;
+   display: flex;
+   align-items: center;
+   
+}
+
+.contenedor-titulo-descubre h1{
+   font-size: 61.14px;
+   line-height: 110%;
+   color: #FFFFFF;
+   text-align: center;
+}
+
+.btn-descarga{
+   position: absolute;
+   width: 540px;
+   height: 66px;
+   left:370px;
+   top:400px;
+   background-color: var(--background-btn);
+   color: #FFFFFF;
+   border-radius: 111px;
+   font-size: 31.14px;
+   line-height: 110%;
+   font-weight: 400px;
+   -webkit-text-stroke: 1px white; /* Trazo de 1px en blanco alrededor del texto */
+   box-shadow: 0 0 0 8px #FFFFFF; 
+   filter: drop-shadow(4px 5px 0 #02187E);
+   cursor: pointer;
+   border: none;
+}
 
 /*----MAS AMIGOS, MAS DIVERSION-----*/
 .contenedor-mas-amigos{
    position: relative;
-   top:13900px;
+   top:14200px;
    height: 823px;
    width: 1280px;
    display: grid;
@@ -401,6 +501,9 @@ display: none; /* Chrome, Safari y Opera */
 
 
 /*-------SECTION VIDEO--------*/
+.hidden{
+   display: none;
+}
 .section-video{
    position: relative;
    height: 1443.83px;
@@ -423,19 +526,32 @@ display: none; /* Chrome, Safari y Opera */
 
 }
 
-.contenedor-video {
+.contenedor-video , .contenedor-video-imagen{
    position: absolute;
    height: 452px;
    width: 804px;
    left: 98px;
    top: 550px;
-   background-color: white;
-   border: 29px solid white;
+  /* background-color: white;
+   border: 29px solid white;*/
    border-radius: 30px;
    display: flex;
    justify-content: center;
    align-items: center;
 }
+
+.btn-play{
+   position: absolute;
+   border: none;
+   z-index: 1000;
+   background-color: transparent;
+}
+
+.btn-play iconify-icon{
+   font-size: 101px;
+ /*  box-shadow: inset 0 0 0 5px #FFFFFF;*/
+}
+
 .contenedor-video iframe{
    position: absolute;
    height: 402px;
