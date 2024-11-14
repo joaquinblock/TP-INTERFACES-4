@@ -365,19 +365,17 @@ header{
    color: var(--color-blue);
 }
 
-#title-section-2{
-   position: absolute;
-   top: 55px;
-   left: 100px;
-   width: 508px;
-   height: 132px;
-   z-index: 1;
-   font-weight: var(--bold);
-   line-height: 44.41px;
-   text-align: left;
+/*------LA APP MAS DIVERTIDA-----*/
+.contenedor-app-mas-divertida{
+   position: relative;
+   height: 1871px;
+   width: 1280px;
+   
+   border: 2px solid red;
+   clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
 }
 
-#p-section-2{
+.titulo-app-divertida{
    position: absolute;
    font-weight: var(--regular);
    line-height: 24px;
@@ -390,12 +388,142 @@ header{
    z-index: 1;
 }
 
+.contenedor-titulo-app-divertida h1{ 
+   color: #1B428F;
+   font-weight: var(--semi-bold);
+   font-size: var(--size-title-2);
+   line-height: 94.5%;
+
+}
+
+.contenedor-p-app-divertida{
+   position: absolute;
+   height: 154px;
+   width: 704px;
+   left:100px;
+   top:230px;
+   line-height: normal;
+}
+
+.contenedor-p-app-divertida p{
+   font-size: var(--size-text);
+   color: #1B428F;
+   font-weight: 400px;
+}
+
+@keyframes show {
+   from {
+       opacity: 0;
+       scale: 25%
+   }
+
+   to {
+       opacity: 1;
+       scale: 100%;
+   }
+}
+/*------LA APP MAS DIVERTIDA-----*/
+.contenedor-app-mas-divertida{
+   position: relative;
+   height: 1871px;
+   width: 1280px;
+   
+   border: 2px solid red;
+   clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+}
+
+.titulo-app-divertida{
+   position: absolute;
+   top: 55px;
+   left: 100px;
+   width: 508px;
+   height: 132px;
+   z-index: 1;
+   font-weight: var(--bold);
+   line-height: 44.41px;
+   text-align: left;
+}
+
+.contenedor-titulo-app-divertida h2{ 
+   font-weight: var(--semi-bold);
+   line-height: 94.5%;
+}
+
+.contenedor-p-app-divertida{
+   color: var(--color-blue);
+   position: absolute;
+   height: 154px;
+   width: 704px;
+   left:100px;
+   top:230px;
+   line-height: normal;
+}
+
+.contenedor-p-app-divertida p{
+   font-size: var(--size-text);
+   font-weight: 400px;
+}
+
+.contenedor-img-app-divertida{
+   position: absolute;
+   height: 324.35px;
+   width: 576.38px;
+   left:236px;
+   top:370px;
+}
+
+.contenedor-cubo-app-divertida{
+   position: absolute;
+   width: 601.64px;
+   height: 543.24px;
+   left:48px;
+   top:610px;
+}
+
+.contenedor-personaje5-app-divertida img{
+   position: absolute;
+   height: 1259px;
+   width: 572px;
+   left: 787px;
+   top:-80px;
+}
+
+.contenedor-cards{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr; 
+   gap: 10px;
+   height: 515px;
+   width: 1081px;
+}
+
+.contenedor-cards{
+   position: absolute;
+   width: 1080px;
+   height: 515px;
+   left: 100px;
+   top:1300px;
+
+}
+
+.card1 img, .card2 img, .card3 img{
+   height: 302.60px;
+   width: 332.96px;
+
+}
+
+.card1 p, .card2 p, .card3 p{
+   font-size: var(--size-text);
+   font-weight: 400px;
+   margin-top: 15px;
+}
+
+
+
 /*--------- DESCUBRE EL JUEGO------------*/
 .contenedor-descubre-juego{
    position: relative;
    width: 1280px;
    height: 1157px;
-   top:14259px;
    display: flex;
    justify-content: center;
 
@@ -448,7 +576,6 @@ header{
 /*----MAS AMIGOS, MAS DIVERSION-----*/
 .contenedor-mas-amigos{
    position: relative;
-   top:14259px;
    height: 823px;
    width: 1280px;
    display: grid;
@@ -535,7 +662,6 @@ display: none; /* Chrome, Safari y Opera */
    width: 1280px;
    background-image: url('../img/Rectangle\ 25.png');
    display: flex;
-   top:14260px;
 
 }
 
@@ -603,7 +729,6 @@ display: none; /* Chrome, Safari y Opera */
    position: relative;
    display: flex;
    flex-direction: row;
-   top:14259px;
    border:2px solid red;
 
 }
@@ -647,7 +772,6 @@ display: none; /* Chrome, Safari y Opera */
    position: relative;
    height: 729px;
    width: 1280px;
-   top:14262px;
    background-image: url('../img/455.png'); 
    overflow: hidden;
 }
@@ -667,7 +791,6 @@ display: none; /* Chrome, Safari y Opera */
 .contenedor-suscripcion{
    height: 1560px;
    width: 1280px;
-   top: 14262px;
    position: relative;
    background: linear-gradient(
          to top, 
@@ -863,7 +986,6 @@ display: none; /* Chrome, Safari y Opera */
    background-color: var(--background-contenedor-footer1);
    display: flex;
    justify-content: center;
-   top: 14264px;
 
 }
 
@@ -881,7 +1003,6 @@ footer{
    font-size: var(--size-text);
    display: flex; 
    flex-direction: column;  
-   margin-top: 14265px;
 }
 
 footer a{
