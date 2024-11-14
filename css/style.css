@@ -358,81 +358,16 @@ header{
    SECTION-2
    ============================ */
 
-.section-2{
+/*------LA APP MAS DIVERTIDA-----*/
+.contenedor-app-mas-divertida{
    position: relative;
-   width: 1279px;
-   overflow: hidden;
+   height: 1871px;
+   width: 1280px;
+   clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+}
+
+.titulo-app-divertida{
    color: var(--color-blue);
-}
-
-/*------LA APP MAS DIVERTIDA-----*/
-.contenedor-app-mas-divertida{
-   position: relative;
-   height: 1871px;
-   width: 1280px;
-   
-   border: 2px solid red;
-   clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
-}
-
-.titulo-app-divertida{
-   position: absolute;
-   font-weight: var(--regular);
-   line-height: 24px;
-   text-align: left;
-   top: 209px;
-   left: 100px;
-   width: 704px;
-   height: 154px;
-   text-align: justify;
-   z-index: 1;
-}
-
-.contenedor-titulo-app-divertida h1{ 
-   color: #1B428F;
-   font-weight: var(--semi-bold);
-   font-size: var(--size-title-2);
-   line-height: 94.5%;
-
-}
-
-.contenedor-p-app-divertida{
-   position: absolute;
-   height: 154px;
-   width: 704px;
-   left:100px;
-   top:230px;
-   line-height: normal;
-}
-
-.contenedor-p-app-divertida p{
-   font-size: var(--size-text);
-   color: #1B428F;
-   font-weight: 400px;
-}
-
-@keyframes show {
-   from {
-       opacity: 0;
-       scale: 25%
-   }
-
-   to {
-       opacity: 1;
-       scale: 100%;
-   }
-}
-/*------LA APP MAS DIVERTIDA-----*/
-.contenedor-app-mas-divertida{
-   position: relative;
-   height: 1871px;
-   width: 1280px;
-   
-   border: 2px solid red;
-   clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
-}
-
-.titulo-app-divertida{
    position: absolute;
    top: 55px;
    left: 100px;
