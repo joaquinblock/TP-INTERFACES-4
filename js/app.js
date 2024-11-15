@@ -1,7 +1,7 @@
 const logo_principal = document.querySelector("#logo-principal");
 const logo_header = document.querySelector("#logo-header");
 
-let menu_hamburguesa = document.getElementById('menu-hamburguesa');
+const menu_hamburguesa = document.getElementById('boton-menu-hamburguesa');
 
 document.getElementById('boton-menu-hamburguesa').addEventListener("click", () => {
 
@@ -75,3 +75,83 @@ document.addEventListener("scroll", function () {
     section1.style.backgroundSize = Math.max(window.scrollY, 100) + "%";
 
 });
+
+const header = document.getElementById('header');
+const comprar = document.getElementById('boton-comprar');
+
+
+// Ajustar el tamaño del espaciador dinámicamente
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+    menu_hamburguesa.style.scale = 0.9;
+    logo_header.style.scale = 0.9;
+    comprar.style.scale = 0.9;
+  } else {
+    header.classList.remove('scrolled');
+    menu_hamburguesa.style.scale = 1;
+    logo_header.style.scale = 1;
+    comprar.style.scale = 1;
+  }
+});
+
+//CAMBIAR IMAGENES CADA 3 SEGUNDOS
+
+const imagenes = [
+  "../img/imagen-cambia.png", 
+  "../img/imagen-cambia-1.png", 
+  "../img/imagen-cambia-2.png",
+  "../img/imagen-cambia-3.png"
+];
+
+let indice = 0;
+
+
+function cambiarImagen() {
+ 
+  const imagen = document.getElementById("imagen-cambia");
+  imagen.src = imagenes[indice];
+
+  // Actualiza el índice para la siguiente imagen
+  indice = (indice + 1 >= imagenes.length) ? 0 : indice + 1; //para que no se pase de largo
+}
+
+// Cambiar la imagen cada 3 segundos (3000 milisegundos)
+setInterval(cambiarImagen, 3000);
+
+
+//Punto 7
+const card1 = document.querySelector("#card1");
+const card2 = document.querySelector("#card2");
+const card3 = document.querySelector("#card3");
+document.addEventListener("scroll", () => {
+    if (window.scrollY > 1350) { //Si la altura en Y es mayor a 1350, realizo la animacion en las cards
+        card1.classList.add("animacion-card");
+        card2.classList.add("animacion-card");
+        card3.classList.add("animacion-card");
+    }else{
+      card1.classList.remove("animacion-card");
+      card2.classList.remove("animacion-card");
+      card3.classList.remove("animacion-card");
+    }
+});
+
+//Punto 8
+
+const fondoDescubre = document.querySelector('.fondoDescubre');
+
+document.addEventListener('mousemove', (event) => {
+    // Calcula el centro de la ventana
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    // Calcula la distancia del mouse desde el centro
+    const deltaX = (event.clientX - centerX) * -0.02; 
+    const deltaY = (event.clientY - centerY) * -0.02; //negativo para que se mueva en la dirección opuesta a la que se mueve el mouse.
+
+
+    // Aplica la transformación
+    fondoDescubre.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+});
+
+
