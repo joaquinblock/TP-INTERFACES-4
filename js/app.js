@@ -154,4 +154,8 @@ document.addEventListener('mousemove', (event) => {
     fondoDescubre.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 });
 
+//punto 9
+
+console.log(window.scrollY);
+
 
