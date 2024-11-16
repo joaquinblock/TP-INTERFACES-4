@@ -609,7 +609,7 @@ header{
    margin-bottom: 276px;
    opacity: 0;
    transform: translateY(20px);
-   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .section-scroll.visible {
@@ -622,8 +622,13 @@ header{
    width: 291px;
    height: 436px;
    left:783px;
-   top:50px;
-   transition: opacity 0.3s ease-in-out;
+   top:350px;
+   transition: opacity 0.1s ease-in-out;
+}
+
+
+.hidden-opacity {
+  opacity: 0; /* Hace la imagen invisible */
 }
 
 

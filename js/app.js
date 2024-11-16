@@ -154,8 +154,97 @@ document.addEventListener('mousemove', (event) => {
     fondoDescubre.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
 });
 
-//punto 9
+document.addEventListener('mousemove', (event) => {
+  // const mouseX = event.pageX; // Coordenada X relativa a toda la página
+  // const mouseY = event.pageY; // Coordenada Y relativa a toda la página
+  // console.log(`Mouse position relative to the page: X=${mouseX}, Y=${mouseY}`);
+});
 
-console.log(window.scrollY);
+let currentImageIndex = null; // Variable para almacenar el índice actual de la imagen
+
+const infoScroll = document.getElementsByClassName("section-scroll");
+
+window.addEventListener('scroll', () => {
+  console.log(window.scrollY);
+
+  const scroll = window.scrollY;
+  let index;
+
+  switch (true) {
+    case scroll < 4000:
+      index = 0;
+      break;
+    case scroll >= 4000 && scroll < 4450:
+      index = 1;
+      break;
+    case scroll >= 4450 && scroll < 4900:
+      index = 2;
+      break;
+    case scroll >= 4900 && scroll < 5480:
+      index = 3;
+      break;
+    case scroll >= 5480 && scroll < 5880:
+      index = 4;
+      break;
+    case scroll >= 5880 && scroll < 6390:
+      index = 5;
+      break;
+    case scroll >= 6390 && scroll < 6890:
+      index = 6;
+      break;
+    case scroll >= 6890 && scroll < 7330:
+      index = 7;
+      break;
+    case scroll >= 7330 && scroll < 7810:
+      index = 8;
+      break;
+    case scroll >= 7810 && scroll < 8230:
+      index = 9;
+      break;
+    case scroll >= 8230:
+      index = 10;
+      break;
+    default:
+      index = null; 
+  }
+
+  if (index !== null && index !== currentImageIndex) {
+    currentImageIndex = index;
+
+    // Aplicar transición de opacidad directa
+    mainImage.style.transition = 'opacity 0.1s ease-in-out';
+    mainImage.style.opacity = 0; // Desvanece la imagen actual
+
+    Array.from(infoScroll).forEach((section, i) => {
+      if (i === index) {
+        section.classList.add("visible");
+      } else {
+        section.classList.remove("visible");
+      }
+    });
+
+    setTimeout(() => {
+      mainImage.src = imagenesScroll[index]; // Cambia la imagen
+      mainImage.style.opacity = 1; // Muestra la nueva imagen
+    }, 100); // Debe coincidir con la duración de la transición
+  }
+});
+
+//punto 9
+const mainImage = document.querySelector('#main-image');
+const imagenesScroll = [
+  "../img/scroll-0.png", 
+  "../img/scroll-1.png", 
+  "../img/scroll-2.png", 
+  "../img/scroll-3.png", 
+  "../img/scroll-4.png", 
+  "../img/scroll-5.png", 
+  "../img/scroll-6.png", 
+  "../img/scroll-7.png", 
+  "../img/scroll-8.png", 
+  "../img/scroll-9.png", 
+  "../img/scroll-10.png" 
+];
+
 
 
