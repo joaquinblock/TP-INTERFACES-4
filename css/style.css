@@ -49,6 +49,24 @@ body {
    display: grid;
    grid-template-rows: 1fr auto; /* (altura automática, basada en el contenido). 1fr ocupa el espacio restante de la pantalla.*/
    min-height: 100vh; 
+   overflow-y: scroll; /* Scroll habilitado dentro de este contenedor */
+
+}
+
+h3{
+   font-size: var(--size-title-3);
+}
+
+h2{
+   font-size: var(--size-title-2);
+}
+
+h1{
+   font-size: var(--size-title-1);
+}
+
+p{
+   font-size: var(--size-text);
 }
 
 
@@ -56,11 +74,23 @@ body {
    HEADER
    ============================ */
 
+
 header{
-   background: linear-gradient(180deg, var(--color-gradient-1) 0%,  var(--color-gradient-2) 88%,  var(--color-gradient-3) 100%);
-   position: fixed;
+   background-color: var(--color-gradient-1);
+   position: sticky;
+   top: 0; /* Umbral para activarse y volverse fixed*/
+   z-index: 1000; /* Para garantizar que esté encima de otros elementos */
+   transition: all 0.1s ease;
    width: 1280px; 
-   z-index: 1000;
+}
+
+.scrolled {
+   background: linear-gradient(
+      180deg,
+      var(--color-gradient-1) 0%,
+      var(--color-gradient-2) 88%,
+      var(--color-gradient-3) 100%
+   );
 }
 
 .header-container{
@@ -68,7 +98,7 @@ header{
    display: flex;
    align-items: center;
    justify-content: space-between;
-   z-index: 10;
+   z-index: 1000;
 }
 
 /* ============================
@@ -110,10 +140,6 @@ header{
    
 }
 
-.shadow{
-   box-shadow: 4px 5px 0px 0px var(--color-shadow);
-}
-
 .rotar-arriba {
    transform: translateY(-5px) rotate(45deg);
 }
@@ -124,6 +150,94 @@ header{
 
 .rotar-abajo {
    transform: rotate(-45deg);
+}
+/*------MENÚ DESPLEGABLE-------*/
+.contenedor-menu{
+   display: none;
+   position: fixed;
+   z-index: 1001;
+   width: 300px;
+   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 178) 100%);
+   top:80px;
+   border-radius: 0 0 20px 20px;
+   transition: left 0.3s ease; /* Aparece con suavidad */
+}
+
+nav.active {
+   position: fixed;
+   display: flex; 
+   flex-direction: column;
+   left:200px;
+}
+
+.contenedor-menu div{
+   display: flex;
+   align-items: center;
+   justify-content: start;
+   gap: 15px;
+   padding-bottom: 10px;
+   text-align: left;
+}
+
+.contenedor-menu div img{
+   height: 80px;
+   width: 80px;
+   object-fit: cover; 
+}
+.contenedor-menu div.menu-item img.item-5,div.menu-item img.item-1,div.menu-item img.item-2 {
+   height: 60px;
+   width: 60px; 
+}
+
+.contenedor-menu div.menu-item img.item-5{
+   padding-left: 22px;
+}
+
+div.menu-item img.item-1, div.menu-item img.item-2{
+   padding-left: 10px;
+}
+
+
+.contenedor-menu div a{
+   text-decoration: none;
+   font-size: 20px;
+}
+
+.contenedor-menu div a:hover{
+   color: var(--background-contenedor-amarillo);
+
+}
+
+/* Estilo inicial de los ítems del menú */
+.menu-item {
+   opacity: 0;
+   transform: translateX(-100%);
+   animation: slideIn 0.5s ease forwards;
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+   to {
+         opacity: 1;
+         transform: translateX(0);
+   }
+}
+
+/* Retardo en cada ítem */
+.menu-item:nth-child(1) {
+   animation-delay: 0.2s;
+}
+.menu-item:nth-child(2) {
+   animation-delay: 0.4s;
+}
+.menu-item:nth-child(3) {
+   animation-delay: 0.6s;
+}
+.menu-item:nth-child(4) {
+   animation-delay: 0.8s;
+}
+.menu-item:nth-child(5) {
+   animation-delay: 1s;
 }
 
 /* ============================
@@ -166,13 +280,15 @@ header{
    SECTION-1
    ============================ */
 
+#background-1{
+   width: 100%;
+   height: 959px;
+   background-attachment: fixed; /*VER PORQUE NO FUNCIONa*/
+}
+
 .section-1{
    position: relative;
-   background-image: url('../img/background-1.png');
-   background-size: cover;
-   background-position: center; 
-   background-repeat: repeat-x; 
-   width: 100%;
+   width: 1279px;
    height: 959px;
    overflow: hidden;
 }
@@ -336,25 +452,11 @@ header{
    z-index: 1;
 }
 
-.animacion-entrada {
-   view-timeline-name: --image;
-   view-timeline-axis: block;
 
-   animation-timeline: --image;
-   animation-name: show;
-}
+/* ============================
+   SECTION-2
+   ============================ */
 
-@keyframes show {
-   from {
-       opacity: 0;
-       scale: 25%
-   }
-
-   to {
-       opacity: 1;
-       scale: 100%;
-   }
-}
 /*------LA APP MAS DIVERTIDA-----*/
 .contenedor-app-mas-divertida{
    position: relative;
@@ -364,22 +466,25 @@ header{
 }
 
 .titulo-app-divertida{
-   position:absolute;
+   color: var(--color-blue);
+   position: absolute;
+   top: 55px;
+   left: 100px;
    width: 508px;
    height: 132px;
-   left:100px;
-   top:70px;
+   z-index: 1;
+   font-weight: var(--bold);
+   line-height: 44.41px;
+   text-align: left;
 }
 
-.contenedor-titulo-app-divertida h1{ 
-   color: #1B428F;
+.contenedor-titulo-app-divertida h2{ 
    font-weight: var(--semi-bold);
-   font-size: var(--size-title-2);
    line-height: 94.5%;
-
 }
 
 .contenedor-p-app-divertida{
+   color: var(--color-blue);
    position: absolute;
    height: 154px;
    width: 704px;
@@ -390,7 +495,6 @@ header{
 
 .contenedor-p-app-divertida p{
    font-size: var(--size-text);
-   color: #1B428F;
    font-weight: 400px;
 }
 
@@ -408,6 +512,15 @@ header{
    height: 543.24px;
    left:48px;
    top:610px;
+}
+
+
+#img4 {
+   position: absolute;
+   top: -60px;
+   left: 70px;
+   
+
 }
 
 .contenedor-personaje5-app-divertida img{
@@ -435,19 +548,62 @@ header{
 
 }
 
-.card1 img, .card2 img, .card3 img{
+.card{
+   opacity: 0;
+    /* Comienza oculto */
+    transform: translateY(20px);
+    /* Desplazado hacia abajo */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card img{
    height: 302.60px;
    width: 332.96px;
 
 }
 
-.card1 p, .card2 p, .card3 p{
+.card p{
    font-size: var(--size-text);
    font-weight: 400px;
    margin-top: 15px;
 }
 
+.animacion-card {
+   opacity: 1;
+   transform: translate(0px, 0px);
+}
 
+/* inicie varias animaciones en paralelo, con una pequeña diferencia de 0.3 segundos.*/
+
+#card1 {
+   transition-delay: 0s;
+}
+
+#card2 {
+   transition-delay: 0.3s;
+}
+
+#card3 {
+   transition-delay: 0.6s;
+}
+
+#imagen-cambia{
+   width: 576.38px;
+   height: 324.35px;
+   top: 1290px;
+   left: 236px;
+   gap: 0px;
+   border-radius: 77px;
+   border: 29px solid rgba(27, 95, 153, 1);
+   opacity: 0px;
+}
+
+.titulo-app-divertida,
+.contenedor-p-app-divertida, .contenedor-img-app-divertida,
+.contenedor-personaje5-app-divertida,
+.contenedor-cubo-app-divertida {
+   transition: transform 0.1s ease; /* Transición suave */
+}
 
 /*--------- DESCUBRE EL JUEGO------------*/
 .contenedor-descubre-juego{
@@ -456,14 +612,22 @@ header{
    height: 1157px;
    display: flex;
    justify-content: center;
+   overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
 
 }
 .fondoDescubre{
    position: absolute;
-   z-index: 1000;
+   z-index: 500;
    bottom: 0;
+   transform: scale(1.1);/* Escala inicial para evitar cortes */
    transition: transform 0.1s ease-out; /* Transición suave para el efecto de movimiento */
-   
+   will-change: transform; /* Mejora el rendimiento en animaciones */   
+}
+
+
+/* Efecto al mover la imagen */
+.contenedor-descubre-juego:hover .fondoDescubre {
+   transform: scale(1.2) translateY(-10px); /* Escala y movimiento al hacer hover */
 }
 
 .contenedor-titulo-descubre{
@@ -506,10 +670,8 @@ header{
 /*----MAS AMIGOS, MAS DIVERSION-----*/
 .contenedor-mas-amigos{
    position: relative;
-   height: 823px;
+   height: 5400px;
    width: 1280px;
-   display: grid;
-   grid-template-rows: auto 1fr;
    gap: 20px;
    padding: 20px;
 
@@ -520,7 +682,6 @@ header{
    left: 100px;
    top:70px;
    font-weight: var(--semi-bold);
-   font-size: var(--size-title-1);
    line-height: 94.5%;
 }
 
@@ -529,30 +690,34 @@ header{
    height: 436px;
    width: 291px;
    left: 243px;
-   top:250px;
-}
-
-
-.contenedor-img-divs{
-   display: grid;
-   grid-template-columns: 1fr 2fr;
+   top:25vh;
 }
 
 
 .contenedor-divs{
    position: absolute;
    left:713px;
-   top:350px;
+   top:260px;
    height: 4884px;
    width: 467px;
    bottom: 267px;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
 } 
+
+.contenedor-img-divs{
+   width: 100%;  
+   height: 5120px;
+   padding-top: 50px; 
+   margin-top: 100px;
+}
 
 .section-scroll{
    margin-bottom: 276px;
    opacity: 0;
    transform: translateY(20px);
-   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .section-scroll.visible {
@@ -560,35 +725,18 @@ header{
    transform: translateY(0);
 }
 
-.contenedor-divs div h2{
-   font-size: var(--size-title-3);
-
-}
-
-
-.contenedor-divs div p{
-   font-size: var(--size-text);
-
-}
-
-#scroll-container {
-   height: 400px; /* Ajusta la altura según tus necesidades */
-   overflow-y: scroll;
-   scrollbar-width: none;
-}
-
-.contenedor-img-divs img {
-   position: absolute;
+#main-image{
+   position: sticky;
    width: 291px;
    height: 436px;
-   left:243px;
-   top:250px;
-   transition: opacity 0.3s ease-in-out;
+   left:calc(100% / 3.4);
+   top:25vh;
+   transition: opacity 0.1s ease-in-out;
 }
 
 
-#scroll-container::-webkit-scrollbar {
-display: none; /* Chrome, Safari y Opera */
+.hidden-opacity {
+  opacity: 0; /* Hace la imagen invisible */
 }
 
 
@@ -603,8 +751,7 @@ display: none; /* Chrome, Safari y Opera */
    width: 1280px;
    background-image: url('../img/Rectangle\ 25.png');
    display: flex;
-   flex-direction: column;
-
+   flex-direction: column; 
 }
 
 
@@ -613,7 +760,6 @@ display: none; /* Chrome, Safari y Opera */
    height: 171px;
    width: 802px;
    left:100px;
-   font-size: var(--size-title-1);
    color:white;
    top:200px;
 
@@ -631,18 +777,14 @@ display: none; /* Chrome, Safari y Opera */
    display: flex;
    justify-content: center;
    align-items: center;
+   animation: moverVideo 15s ease-in-out infinite;
  
-}
-
-.contenedor-video-imagen{
-   transform: translateY(0); /* Inicial */
-    transition: transform 0.1s linear; /* Suaviza el movimiento */
 }
 
 .btn-play{
    position: absolute;
    border: none;
-   z-index: 1000;
+   z-index: 500;
    background-color: transparent;
 }
 
@@ -667,12 +809,33 @@ display: none; /* Chrome, Safari y Opera */
    width: 638px;
    left: 731px;
    top:390px;
-   transform: translateY(0); /* Inicial */
-   transition: transform 0.1s linear; /* Suaviza el movimiento */
-   
+   animation: moverPersonaje 20s ease-in-out infinite;
 }
 
+.contenedor-personaje-section img{
+   z-index: 1001;
+}
 
+@keyframes moverPersonaje {
+  /* 0% { top: 390px}
+   25% {  top: 200px}
+   50% { top: 390px}
+   75% {  top: 580px}
+   100% {top: 390px}*/
+
+   0% { top: 390px}
+   25% {  top: 550px}
+   50% { top: 180px}
+   100% { top: 390px}
+ }
+ 
+ @keyframes moverVideo {
+   0% { top: 550px}
+   25% {  top: 500px}
+   50% { top: 550px}
+   75% {  top: 600px}
+   100% {top: 550px}
+ }
 
 /*-------EFECTOS 3D----------*/
 .contenedor-efectos-3d{
@@ -692,7 +855,6 @@ display: none; /* Chrome, Safari y Opera */
 
 }
 .contenedor-efectos-3d h1{
-   font-size: var(--size-title-1);
    color:var(--color-title-1);
    font-weight: 600; /* Semi-bold */
    line-height: 94.5%;
@@ -703,10 +865,15 @@ display: none; /* Chrome, Safari y Opera */
 .contenedor-p-3d{
    width: 467px;
    height: 190px;
-   font-size: var(--size-text);
-   line-height: 94.5%;
    left: 100px;
 
+}
+
+.contenedor-titulo-3d .contenedor-p-3d p{
+   font-size: var(--size-text);
+   font-weight: var(--regular);
+   line-height: 94.5%;
+   text-align: left;
 }
 
 .contenedor-cubo-3d {
@@ -714,6 +881,11 @@ display: none; /* Chrome, Safari y Opera */
    width: 667px;
    position: absolute;
    left:599px;
+}
+
+#cubo3D{
+   height: 990px;
+   width: 667px;   
 }
 
 
@@ -737,12 +909,35 @@ display: none; /* Chrome, Safari y Opera */
    transform: scale(1.1); 
    box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Resplandor  */
 }
+/*-----titulo SUSCRIPCION------*/
+.titulo-suscripcion{
+   position: relative;
+   background-color: transparent;
+   width: 1280px;
+   height: 274px;
+   z-index: 1000;
+   
+}
 
+.titulo-suscripcion div{
+   position: absolute;
+   height: 171px;
+   width: 816px;
+   left: 100px;
+   top:190px;
+
+}
+
+.titulo-suscripcion h1{
+   font-weight: var(--semi-bold);
+   line-height: 94.5%;
+
+}
 
 /*------SUSCRIPCION-----*/
 /*del top le resto 12900*/
 .contenedor-suscripcion{
-   height: 1560px;
+   height: 1296px;
    width: 1280px;
    position: relative;
    background: linear-gradient(
@@ -763,20 +958,6 @@ display: none; /* Chrome, Safari y Opera */
    
 }
 
-.titulo-suscripcion{
-   position: absolute;
-   left: 100px;
-   top:150px;
-   width: 816px;
-   height: 171px;
-   
-}
-
-.titulo-suscripcion h1{
-   font-size: var(--size-title-1);
-   font-weight: var(--semi-bold);
-   line-height: 94.5%;
-}
 
 .nube1-suscripcion, .nube2-suscripcion{
    width: 387px;
@@ -787,13 +968,13 @@ display: none; /* Chrome, Safari y Opera */
 
 .nube1-suscripcion{
    left:-56px;/* Coordenada X */
-   top: 834px; /*13434 */
+   top: 550px; /*13434 */
    animation-duration: 30s; /* Duración específica para esta nube */
 }
 
 .nube2-suscripcion{
    left:962px;
-   top:505px ;/*13175px;*/
+   top:270px ;/*13175px;*/
    animation: moverNubeIzquierda 30s linear infinite;
 }
 
@@ -801,7 +982,7 @@ display: none; /* Chrome, Safari y Opera */
    height: 124px;
    width: 265px;
    left:794px;
-   top:467px; /*13132px;*/
+   top:235px; /*13132px;*/
    position: absolute;
    animation: moverNubeIzquierda 30s linear infinite;
 
@@ -815,14 +996,14 @@ display: none; /* Chrome, Safari y Opera */
    height: 997px;
    width: 561px;
    left:756px;
-   top: 588px;/*13228*/
+   top: 340px;/*13228*/
 }
 
 .personaje2-suscripcion{
    height: 480px;
    width: 480px;
    left: 65px;
-   top:1030px;/*13663px; */
+   top:760px;/*13663px; */
 
 }
 
@@ -830,14 +1011,13 @@ display: none; /* Chrome, Safari y Opera */
    height: 509px;
    width: 509px;
    left:407px;
-   top: 1030px; /*13634px;*/
+   top: 759px; /*13634px;*/
 }
 
 .advertencias p{
-   font-size: var(--size-text);
    width: 578px;
    height: 95px;
-   top:518px;
+   top:260px;
    left:100px;
    position: absolute;
    line-height: 94.5%;
@@ -848,7 +1028,7 @@ display: none; /* Chrome, Safari y Opera */
    height: 145px;
    width: 231px;
    left:100px;
-   top: 644px;/*13264px;*/
+   top: 370px;/*13264px;*/
 }
 
 .subrayado {
@@ -860,7 +1040,7 @@ display: none; /* Chrome, Safari y Opera */
    width: 780px;
    height: 100px;
    position: relative;
-   top: 362px;
+   top: 120px;
    display: flex;
    left: 100px; 
 }
@@ -907,7 +1087,9 @@ display: none; /* Chrome, Safari y Opera */
    1px 1px 0 white;  /* Simula el borde con sombra */
 
 }
-/* Animación para mover la nube hacia la izquierda */
+
+
+/*/* Animación para mover la nube hacia la izquierda */
 @keyframes moverNubeIzquierda {
    0% {
       transform: translateX(0); /* Posición inicial */
@@ -975,7 +1157,7 @@ footer div.container-derechos-autor {
 
 footer div.container-derechos-autor p{
    margin-bottom: 10px;
-   letter-spacing: 2.3px; /*BUSCAR FORMA QUE NO ROMPA */ 
+   letter-spacing: 2.3px; 
    line-height: 94.5%;
 
 }
