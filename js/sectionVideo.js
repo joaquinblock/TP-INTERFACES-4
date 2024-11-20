@@ -10,6 +10,8 @@ btnPlay.addEventListener('click', function(){
     portadaVideo.classList.add('hidden');
     video.classList.remove('hidden');
 
+    
+
 
 });
 
