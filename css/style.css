@@ -49,6 +49,8 @@ body {
    display: grid;
    grid-template-rows: 1fr auto; /* (altura automática, basada en el contenido). 1fr ocupa el espacio restante de la pantalla.*/
    min-height: 100vh; 
+   overflow-y: scroll; /* Scroll habilitado dentro de este contenedor */
+
 }
 
 h3{
@@ -84,12 +86,12 @@ header{
 
 .scrolled {
    background: linear-gradient(
-     180deg,
-     var(--color-gradient-1) 0%,
-     var(--color-gradient-2) 88%,
-     var(--color-gradient-3) 100%
+      180deg,
+      var(--color-gradient-1) 0%,
+      var(--color-gradient-2) 88%,
+      var(--color-gradient-3) 100%
    );
- }
+}
 
 .header-container{
    margin-inline: 80px;
@@ -157,6 +159,94 @@ header{
 .rotar-abajo {
    transform: rotate(-45deg);
 }
+/*------MENÚ DESPLEGABLE-------*/
+.contenedor-menu{
+   display: none;
+   position: fixed;
+   z-index: 1001;
+   width: 300px;
+   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 178) 100%);
+   top:80px;
+   border-radius: 0 0 20px 20px;
+   transition: left 0.3s ease; /* Aparece con suavidad */
+}
+
+nav.active {
+   position: fixed;
+   display: flex; 
+   flex-direction: column;
+   left:200px;
+}
+
+.contenedor-menu div{
+   display: flex;
+   align-items: center;
+   justify-content: start;
+   gap: 15px;
+   padding-bottom: 10px;
+   text-align: left;
+}
+
+.contenedor-menu div img{
+   height: 80px;
+   width: 80px;
+   object-fit: cover; 
+}
+.contenedor-menu div.menu-item img.item-5,div.menu-item img.item-1,div.menu-item img.item-2 {
+   height: 60px;
+   width: 60px; 
+}
+
+.contenedor-menu div.menu-item img.item-5{
+   padding-left: 22px;
+}
+
+div.menu-item img.item-1, div.menu-item img.item-2{
+   padding-left: 10px;
+}
+
+
+.contenedor-menu div a{
+   text-decoration: none;
+   font-size: 20px;
+}
+
+.contenedor-menu div a:hover{
+   color: var(--background-contenedor-amarillo);
+
+}
+
+/* Estilo inicial de los ítems del menú */
+.menu-item {
+   opacity: 0;
+   transform: translateX(-100%);
+   animation: slideIn 0.5s ease forwards;
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+   to {
+         opacity: 1;
+         transform: translateX(0);
+   }
+}
+
+/* Retardo en cada ítem */
+.menu-item:nth-child(1) {
+   animation-delay: 0.2s;
+}
+.menu-item:nth-child(2) {
+   animation-delay: 0.4s;
+}
+.menu-item:nth-child(3) {
+   animation-delay: 0.6s;
+}
+.menu-item:nth-child(4) {
+   animation-delay: 0.8s;
+}
+.menu-item:nth-child(5) {
+   animation-delay: 1s;
+}
 
 /* ============================
    BOTONES
@@ -201,6 +291,7 @@ header{
 #background-1{
    width: 100%;
    height: 959px;
+   background-attachment: fixed; /*VER PORQUE NO FUNCIONa*/
 }
 
 .section-1{
@@ -431,6 +522,15 @@ header{
    top:610px;
 }
 
+
+#img4 {
+   position: absolute;
+   top: -60px;
+   left: 70px;
+   
+
+}
+
 .contenedor-personaje5-app-divertida img{
    position: absolute;
    height: 1259px;
@@ -506,7 +606,12 @@ header{
    opacity: 0px;
 }
 
-
+.titulo-app-divertida,
+.contenedor-p-app-divertida, .contenedor-img-app-divertida,
+.contenedor-personaje5-app-divertida,
+.contenedor-cubo-app-divertida {
+   transition: transform 0.1s ease; /* Transición suave */
+}
 
 /*--------- DESCUBRE EL JUEGO------------*/
 .contenedor-descubre-juego{
@@ -522,8 +627,15 @@ header{
    position: absolute;
    z-index: 500;
    bottom: 0;
+   transform: scale(1.1);/* Escala inicial para evitar cortes */
    transition: transform 0.1s ease-out; /* Transición suave para el efecto de movimiento */
-   
+   will-change: transform; /* Mejora el rendimiento en animaciones */   
+}
+
+
+/* Efecto al mover la imagen */
+.contenedor-descubre-juego:hover .fondoDescubre {
+   transform: scale(1.2) translateY(-10px); /* Escala y movimiento al hacer hover */
 }
 
 .contenedor-titulo-descubre{
@@ -570,7 +682,7 @@ header{
    width: 1280px;
    gap: 20px;
    padding: 20px;
-   border: 2px solid red;
+
 }
 .contenedor-mas-amigos h1 {
    position: absolute;
@@ -586,7 +698,7 @@ header{
    height: 436px;
    width: 291px;
    left: 243px;
-   top:250px;
+   top:25vh;
 }
 
 
@@ -625,8 +737,8 @@ header{
    position: sticky;
    width: 291px;
    height: 436px;
-   left: calc(100% / 3.4); /* Es casi un tercio del ancho del contenedor */;
-   top: 25vh;
+   left:calc(100% / 3.4);
+   top:25vh;
    transition: opacity 0.1s ease-in-out;
 }
 
@@ -639,7 +751,7 @@ header{
 
 /*-------SECTION VIDEO--------*/
 .hidden{
-   display: none;
+   display: none !important; 
 }
 .section-video{
    position: relative;
@@ -647,7 +759,7 @@ header{
    width: 1280px;
    background-image: url('../img/Rectangle\ 25.png');
    display: flex;
-
+   flex-direction: column; 
 }
 
 
@@ -667,12 +779,14 @@ header{
    width: 804px;
    left: 98px;
    top: 550px;
-  /* background-color: white;
-   border: 29px solid white;*/
+  /* background-color: white;*/
+   border: 29px solid white;
    border-radius: 30px;
    display: flex;
    justify-content: center;
    align-items: center;
+   animation: moverVideo 15s ease-in-out infinite;
+ 
 }
 
 .btn-play{
@@ -703,9 +817,33 @@ header{
    width: 638px;
    left: 731px;
    top:390px;
+   animation: moverPersonaje 20s ease-in-out infinite;
 }
 
+.contenedor-personaje-section img{
+   z-index: 1001;
+}
 
+@keyframes moverPersonaje {
+  /* 0% { top: 390px}
+   25% {  top: 200px}
+   50% { top: 390px}
+   75% {  top: 580px}
+   100% {top: 390px}*/
+
+   0% { top: 390px}
+   25% {  top: 550px}
+   50% { top: 180px}
+   100% { top: 390px}
+ }
+ 
+ @keyframes moverVideo {
+   0% { top: 550px}
+   25% {  top: 500px}
+   50% { top: 550px}
+   75% {  top: 600px}
+   100% {top: 550px}
+ }
 
 /*-------EFECTOS 3D----------*/
 .contenedor-efectos-3d{
@@ -714,7 +852,6 @@ header{
    position: relative;
    display: flex;
    flex-direction: row;
-   border:2px solid red;
 
 }
 .contenedor-titulo-3d{
@@ -736,9 +873,15 @@ header{
 .contenedor-p-3d{
    width: 467px;
    height: 190px;
-   line-height: 94.5%;
    left: 100px;
 
+}
+
+.contenedor-titulo-3d .contenedor-p-3d p{
+   font-size: var(--size-text);
+   font-weight: var(--regular);
+   line-height: 94.5%;
+   text-align: left;
 }
 
 .contenedor-cubo-3d {
@@ -746,6 +889,11 @@ header{
    width: 667px;
    position: absolute;
    left:599px;
+}
+
+#cubo3D{
+   height: 990px;
+   width: 667px;   
 }
 
 
@@ -769,12 +917,35 @@ header{
    transform: scale(1.1); 
    box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Resplandor  */
 }
+/*-----titulo SUSCRIPCION------*/
+.titulo-suscripcion{
+   position: relative;
+   background-color: transparent;
+   width: 1280px;
+   height: 274px;
+   z-index: 1000;
+   
+}
 
+.titulo-suscripcion div{
+   position: absolute;
+   height: 171px;
+   width: 816px;
+   left: 100px;
+   top:190px;
+
+}
+
+.titulo-suscripcion h1{
+   font-weight: var(--semi-bold);
+   line-height: 94.5%;
+
+}
 
 /*------SUSCRIPCION-----*/
 /*del top le resto 12900*/
 .contenedor-suscripcion{
-   height: 1560px;
+   height: 1296px;
    width: 1280px;
    position: relative;
    background: linear-gradient(
@@ -786,7 +957,6 @@ header{
    );
    margin: 0 auto; /* Centra dentro de la página */
    overflow: hidden;
-   border: 2px solid red;
 }
 .contenedor-pasto{
    height: 389px;
@@ -796,19 +966,6 @@ header{
    
 }
 
-.titulo-suscripcion{
-   position: absolute;
-   left: 100px;
-   top:150px;
-   width: 816px;
-   height: 171px;
-   
-}
-
-.titulo-suscripcion h1{
-   font-weight: var(--semi-bold);
-   line-height: 94.5%;
-}
 
 .nube1-suscripcion, .nube2-suscripcion{
    width: 387px;
@@ -819,13 +976,13 @@ header{
 
 .nube1-suscripcion{
    left:-56px;/* Coordenada X */
-   top: 834px; /*13434 */
+   top: 550px; /*13434 */
    animation-duration: 30s; /* Duración específica para esta nube */
 }
 
 .nube2-suscripcion{
    left:962px;
-   top:505px ;/*13175px;*/
+   top:270px ;/*13175px;*/
    animation: moverNubeIzquierda 30s linear infinite;
 }
 
@@ -833,7 +990,7 @@ header{
    height: 124px;
    width: 265px;
    left:794px;
-   top:467px; /*13132px;*/
+   top:235px; /*13132px;*/
    position: absolute;
    animation: moverNubeIzquierda 30s linear infinite;
 
@@ -847,14 +1004,14 @@ header{
    height: 997px;
    width: 561px;
    left:756px;
-   top: 588px;/*13228*/
+   top: 340px;/*13228*/
 }
 
 .personaje2-suscripcion{
    height: 480px;
    width: 480px;
    left: 65px;
-   top:1030px;/*13663px; */
+   top:760px;/*13663px; */
 
 }
 
@@ -862,13 +1019,13 @@ header{
    height: 509px;
    width: 509px;
    left:407px;
-   top: 1030px; /*13634px;*/
+   top: 759px; /*13634px;*/
 }
 
 .advertencias p{
    width: 578px;
    height: 95px;
-   top:518px;
+   top:260px;
    left:100px;
    position: absolute;
    line-height: 94.5%;
@@ -879,7 +1036,7 @@ header{
    height: 145px;
    width: 231px;
    left:100px;
-   top: 644px;/*13264px;*/
+   top: 370px;/*13264px;*/
 }
 
 .subrayado {
@@ -891,7 +1048,7 @@ header{
    width: 780px;
    height: 100px;
    position: relative;
-   top: 362px;
+   top: 120px;
    display: flex;
    left: 100px; 
 }
@@ -938,7 +1095,9 @@ header{
    1px 1px 0 white;  /* Simula el borde con sombra */
 
 }
-/* Animación para mover la nube hacia la izquierda */
+
+
+/*/* Animación para mover la nube hacia la izquierda */
 @keyframes moverNubeIzquierda {
    0% {
       transform: translateX(0); /* Posición inicial */
@@ -959,6 +1118,57 @@ header{
 }
 
 
+/* ============================
+   SPRNTSHEET
+   ============================ */
+#img-2{
+   position: absolute;
+   left: 550px;
+   top: 14150px;
+   width: 115px;
+   height: 115px;
+   background:url(../img/imagen-2.png) repeat-x;
+  animation: spin-2 3s steps(12) infinite;
+
+}
+
+@keyframes spin-2 {
+   0% { background-position:0 }
+   100% { background-position: 1370px }
+ }
+
+ #img-3{
+   position: absolute;
+   left: 900px;
+   top: 14150px;
+   width: 132px;
+   height: 125px;
+   background:url(../img/imagen-3.png) repeat-x;
+
+  animation: spin-3 3s steps(12) infinite;
+
+}
+
+@keyframes spin-3 {
+   0% { background-position:0 }
+   100% { background-position: 1574px }
+ }
+
+#img-7{
+   position: absolute;
+   left: 1300px;
+   top: 14150px;
+   width: 119px;
+   height: 130px;
+   background:url(../img/imagen-7-1.png) repeat-x;
+  animation: spin-7 3s steps(12) infinite;
+
+}
+
+@keyframes spin-7 {
+   0% { background-position:0 }
+   100% { background-position: 1416px }
+ }
 
 /* ============================
    FOOTER
@@ -981,13 +1191,14 @@ header{
 
 
 footer{
+   position: relative;
    background-color: var(--background-footer);
    color: white;
-   max-width: 1280px;
+   width: 1280px;
    height: 515px;
    font-size: var(--size-text);
    display: flex; 
-   flex-direction: column;  
+   flex-direction: column; 
 }
 
 footer a{
@@ -995,16 +1206,17 @@ footer a{
 }
 
 footer div.container-derechos-autor {
+   position: absolute;
    height: 361px;
    width: 820px;  
-   margin-left: 5%;
+   left: 100px;
    margin-top: 3%;
 
 }
 
 footer div.container-derechos-autor p{
    margin-bottom: 10px;
-   letter-spacing: 2.3px; /*BUSCAR FORMA QUE NO ROMPA */ 
+   letter-spacing: 2.3px; 
    line-height: 94.5%;
 
 }
@@ -1017,10 +1229,11 @@ footer div.container-derechos-autor div a{
 
 }
 footer div img{
+   position: absolute;
+   left: 100px;
    height: 41px;
    width: 212px;
-   margin-left: 5%;
-   margin-top: 3%;
+   top: 440px;
    
 }
 /* Asegura que Xbox y el texto anterior permanezcan en la misma línea */

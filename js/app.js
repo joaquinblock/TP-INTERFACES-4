@@ -10,6 +10,20 @@ document.getElementById('boton-menu-hamburguesa').addEventListener("click", () =
     children[0].classList.toggle('rotar-arriba');
     children[1].classList.toggle('desaparecer');
     children[2].classList.toggle('rotar-abajo');
+
+    let menu_desplegable= document.querySelector(".contenedor-menu");
+    menu_desplegable.classList.toggle('active');
+    
+     // Reinicia la animación si el menú se cierra
+      if (!menu_desplegable.classList.contains('active')) {
+      let items = document.querySelectorAll('.menu-item');
+      items.forEach((item) => {
+          item.style.animation = 'none';
+          setTimeout(() => {
+              item.style.animation = ''; // Reactiva la animación
+          }, 10);
+      });
+  }
 });
 
 
@@ -18,7 +32,7 @@ document.getElementById('boton-menu-hamburguesa').addEventListener("click", () =
 document.addEventListener("scroll", function () {
     const parallaxLeft = document.querySelectorAll(".parallax-left");
     const parallaxRight = document.querySelectorAll(".parallax-right");
-    const parallaxNumeros = document.querySelectorAll(".parallax-nums");
+    //const parallaxNumeros = document.querySelectorAll(".parallax-nums");
 
 
       // Control de la opacidad del logo en función del desplazamiento vertical
@@ -151,7 +165,7 @@ document.addEventListener('mousemove', (event) => {
 
 
     // Aplica la transformación
-    fondoDescubre.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    fondoDescubre.style.transform = ` scale(1.1) translate(${deltaX}px, ${deltaY}px)`;
 });
 
 document.addEventListener('mousemove', (event) => {
@@ -165,43 +179,43 @@ let currentImageIndex = null; // Variable para almacenar el índice actual de la
 const infoScroll = document.getElementsByClassName("section-scroll");
 
 window.addEventListener('scroll', () => {
-  console.log(window.scrollY);
+ // console.log(window.scrollY);
 
   const scroll = window.scrollY;
   let index;
 
   switch (true) {
-    case scroll < 4000:
+    case scroll < 4300:
       index = 0;
       break;
-    case scroll >= 4000 && scroll < 4450:
+    case scroll >= 4300 && scroll < 4750:
       index = 1;
       break;
-    case scroll >= 4450 && scroll < 4900:
+    case scroll >= 4750 && scroll < 5200:
       index = 2;
       break;
-    case scroll >= 4900 && scroll < 5480:
+    case scroll >= 5200 && scroll < 5780:
       index = 3;
       break;
-    case scroll >= 5480 && scroll < 5880:
+    case scroll >= 5780 && scroll < 6180:
       index = 4;
       break;
-    case scroll >= 5880 && scroll < 6390:
+    case scroll >= 6180 && scroll < 6690:
       index = 5;
       break;
-    case scroll >= 6390 && scroll < 6890:
+    case scroll >= 6690 && scroll < 7190:
       index = 6;
       break;
-    case scroll >= 6890 && scroll < 7330:
+    case scroll >= 7190 && scroll < 7630:
       index = 7;
       break;
-    case scroll >= 7330 && scroll < 7810:
+    case scroll >= 7630 && scroll < 8110:
       index = 8;
       break;
-    case scroll >= 7810 && scroll < 8230:
+    case scroll >= 8110 && scroll < 8530:
       index = 9;
       break;
-    case scroll >= 8230:
+    case scroll >= 8530:
       index = 10;
       break;
     default:
