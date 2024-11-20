@@ -142,12 +142,16 @@ header{
    box-shadow: 4px 5px 0px 0px var(--color-shadow);
 }
 
+
+
 .rotar-arriba {
    transform: translateY(-5px) rotate(45deg);
 }
 
 .desaparecer {
+   transition: 0.1s ease;
    opacity: 0;
+   stroke-opacity: 0;
 }
 
 .rotar-abajo {
@@ -621,8 +625,8 @@ header{
    position: sticky;
    width: 291px;
    height: 436px;
-   left:783px;
-   top:350px;
+   left: calc(100% / 3.4); /* Es casi un tercio del ancho del contenedor */;
+   top: 25vh;
    transition: opacity 0.1s ease-in-out;
 }
 
