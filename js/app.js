@@ -36,7 +36,7 @@ document.addEventListener("scroll", function () {
 
 
       // Control de la opacidad del logo en función del desplazamiento vertical
-      if (window.scrollY < 100) {
+      if (window.scrollY < 50) {
         logo_header.style.opacity = 0; //si es menor al header el scroll, el logo no se ve
     }
     if (window.scrollY > 100) {
@@ -175,14 +175,15 @@ document.addEventListener('mousemove', (event) => {
 });
 
 let currentImageIndex = null; // Variable para almacenar el índice actual de la imagen
-
 const infoScroll = document.getElementsByClassName("section-scroll");
 
 window.addEventListener('scroll', () => {
  // console.log(window.scrollY);
 
   const scroll = window.scrollY;
+
   let index;
+
 
   switch (true) {
     case scroll < 4300:
@@ -221,6 +222,8 @@ window.addEventListener('scroll', () => {
     default:
       index = null; 
   }
+
+
 
   if (index !== null && index !== currentImageIndex) {
     currentImageIndex = index;
