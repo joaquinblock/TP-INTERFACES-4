@@ -11,6 +11,16 @@
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <body>
+    <div id="loading-screen" class="container-loading">
+        <div class="nube3-suscripcion"><img src="../img/image 245.png" alt="nube3"></div>
+        <div class="nube2-suscripcion"><img src="../img/image 244.png" alt="nube2"></div>
+        <div class="container-img-loading">
+            <img src="../img/arcoiris4.png" class="loading-arcoIris" alt="arcoIris">
+        </div>
+        <p class="loading-text">Cargando <span id="porcentaje">0</span></p>
+        <div class="nube1-suscripcion"><img src="../img/image 243.png" alt="nube1"></div>
+    </div>
+    <div id="home-content">
         <header id="header">
             <div class="header-container">
                 <button class="boton-header" id="boton-menu-hamburguesa">
@@ -22,15 +32,16 @@
                 <button id="boton-comprar" class="boton shadow btnAnimado">
                     <h4>COMPRAR</h4>
                 </button>
-            </div>    
+            </div>   
+            <nav class="contenedor-menu">
+                <div class="menu-item"><img src="../img/11.png" alt="" class="item-1" > <a href="">Sumas Mágicas</a></div>
+                <div class="menu-item"><img src="../img/22.png" alt="" class="item-2" ><a href="">Rompecabezas</a></div>
+                <div class="menu-item"><img src="../img/image 241.png" alt=""><a href="">Carrera de Conteo</a></div>
+                <div class="menu-item"><img src="../img/image 242.png" alt=""><a href="">Salto de Sumas</a></div>
+                <div class="menu-item"><img src="../img/scroll-10.png" alt="" class="item-5" ><a href="">Aventura de Divisiones</a></div>
+            </nav> 
         </header>
-        <nav class="contenedor-menu">
-            <div class="menu-item"><img src="../img/11.png" alt="" class="item-1" > <a href="">Sumas Mágicas</a></div>
-            <div class="menu-item"><img src="../img/22.png" alt="" class="item-2" ><a href="">Rompecabezas</a></div>
-            <div class="menu-item"><img src="../img/image 241.png" alt=""><a href="">Carrera de Conteo</a></div>
-            <div class="menu-item"><img src="../img/image 242.png" alt=""><a href="">Salto de Sumas</a></div>
-            <div class="menu-item"><img src="../img/scroll-10.png" alt="" class="item-5" ><a href="">Aventura de Divisiones</a></div>
-        </nav>
+      
         <main>
             <section>
                 <div class="section-1">
@@ -314,16 +325,18 @@
             <div class="personaje2-suscripcion"><img src="https://media.giphy.com/media/5ddqGqO8x5rrJ7v5tf/giphy.gif" alt="personaje2"></div>
             <div class="personaje3-suscripcion"><img src="https://media.giphy.com/media/HuocoB7MEUeLMifGFN/giphy.gif" alt="personaje3"></div>
             <div class="personaje1-suscripcion"><img src="https://media.giphy.com/media/fuTByMqFxstXjmDSYm/giphy.gif" alt="personaje1" style="width: 561px; height: 997px;" ></div>
+            
+            <div class="spritesheet">
+                <div id="img-2"></div>
+                <div id="img-3"></div>
+                <div id="img-7"></div>
+            </div>
         </div>
         
         <div class="contenedor-banner">
             <img src="../img/image 226.png" alt="">
         </div>
-        <div class="sprintsheet">
-            <div id="img-2"></div>
-            <div id="img-3"></div>
-            <div id="img-7"></div>
-        </div>
+  
         <footer>
             <div class="container-derechos-autor">
                 <p> ©SEGA. All rights reserved. SEGA is registered in the U.S. Patent and 
@@ -354,5 +367,7 @@
         <!--  <script src="../js/descubreJuego.js"></script>-->
         <script src="../js/sectionVideo.js"></script>
         <script src="../js/3d.js"></script>
+        <script src="../js/loader.js"></script>
+    </div>    
 </body>
 </html>

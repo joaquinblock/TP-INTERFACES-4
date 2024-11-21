@@ -68,12 +68,66 @@ h1{
 p{
    font-size: var(--size-text);
 }
+/*---------LOADER-----------*/
 
+#loading-screen {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-image: url('../img/cielo.jpg');
+   background-size: cover; 
+   background-repeat: no-repeat; 
+   background-position: center; 
+   z-index: 9999;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 
+#home-content {
+   display: none; /* Ocultar inicialmente */
+}
+
+.container-loading{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+}
+.container-img-loading img {
+clip-path: inset(0 100% 0 0); /* Oculta todo desde la derecha */
+transition: clip-path 0.1s linear; /* Suaviza el cambio del recorte */
+}
+
+.loading-text {
+font-size: 24px; 
+font-weight: bold;
+letter-spacing: 2.2px; 
+background: linear-gradient(to right, #FF00D6, #EFB71E, #9700CC); /* Define el degradado */
+-webkit-background-clip: text; /* Aplica el fondo al texto */
+-webkit-text-fill-color: transparent; /* Hace que solo el degradado sea visible */
+}
+.container-loading .nube1-suscripcion{
+   top:550px;
+}
+.container-loading .nube2-suscripcion{
+   top:-60px;
+   left: 1150px;
+}
+
+.container-loading .nube3-suscripcion{
+   position: absolute;
+   top:60px;
+   left: 940px
+}
 /* ============================
    HEADER
    ============================ */
-
+   
 
 header{
    background-color: var(--color-gradient-1);
@@ -162,20 +216,20 @@ header{
 /*------MENÚ DESPLEGABLE-------*/
 .contenedor-menu{
    display: none;
-   position: fixed;
+   position: absolute;
    z-index: 1001;
    width: 300px;
    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 178) 100%);
    top:80px;
    border-radius: 0 0 20px 20px;
    transition: left 0.3s ease; /* Aparece con suavidad */
+   left: 100px;
 }
 
 nav.active {
-   position: fixed;
+   position: absolute;
    display: flex; 
    flex-direction: column;
-   left:200px;
 }
 
 .contenedor-menu div{
@@ -383,7 +437,6 @@ div.menu-item img.item-1, div.menu-item img.item-2{
    left: 360px;
    z-index: 1;
    transition: transform 0.1s ease, opacity 0.1s ease; /* Transiciones suaves */
-    
 }
 
 #piedra-right-1 {
@@ -559,9 +612,9 @@ div.menu-item img.item-1, div.menu-item img.item-2{
 .card{
    opacity: 0;
     /* Comienza oculto */
-    transform: translateY(20px);
+      transform: translateY(20px);
     /* Desplazado hacia abajo */
-    transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .card img{
@@ -918,6 +971,8 @@ div.menu-item img.item-1, div.menu-item img.item-2{
    transform: scale(1.1); 
    box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Resplandor  */
 }
+
+
 /*-----titulo SUSCRIPCION------*/
 .titulo-suscripcion{
    position: relative;
@@ -959,6 +1014,7 @@ div.menu-item img.item-1, div.menu-item img.item-2{
    margin: 0 auto; /* Centra dentro de la página */
    overflow: hidden;
 }
+
 .contenedor-pasto{
    height: 389px;
    width: 1280px;
@@ -973,6 +1029,7 @@ div.menu-item img.item-1, div.menu-item img.item-2{
    height: 181px;
    position: absolute;
    animation: moverNubeDerecha 20s linear infinite; /* Aplica la animación a cada nube */
+
 }
 
 .nube1-suscripcion{
@@ -1074,7 +1131,6 @@ div.menu-item img.item-1, div.menu-item img.item-2{
 
 .contenedor-btn-suscripcion input:focus {
    outline: none; /* Elimina el borde predeterminado */
- 
 }
 
 
@@ -1121,56 +1177,56 @@ div.menu-item img.item-1, div.menu-item img.item-2{
 
 
 /* ============================
-   SPRNTSHEET
+   SPRITESHEET
    ============================ */
+
+
 #img-2{
    position: absolute;
-   left: 550px;
-   top: 14150px;
+   left: 110px;
+   top:1150px;
    width: 115px;
    height: 115px;
    background:url(../img/imagen-2.png) repeat-x;
-  animation: spin-2 3s steps(12) infinite;
-
+   animation: spin-2 3s steps(12) infinite;
 }
 
 @keyframes spin-2 {
    0% { background-position:0 }
    100% { background-position: 1370px }
- }
+}
 
- #img-3{
+#img-3{
    position: absolute;
-   left: 900px;
-   top: 14150px;
+   left: 460px;
+   top: 1150px;
    width: 132px;
    height: 125px;
    background:url(../img/imagen-3.png) repeat-x;
-
-  animation: spin-3 3s steps(12) infinite;
+   animation: spin-3 3s steps(12) infinite;
 
 }
 
 @keyframes spin-3 {
    0% { background-position:0 }
    100% { background-position: 1574px }
- }
+}
 
 #img-7{
    position: absolute;
-   left: 1300px;
-   top: 14150px;
+   left: 850px;
+   top: 1150px;
    width: 119px;
    height: 130px;
    background:url(../img/imagen-7-1.png) repeat-x;
-  animation: spin-7 3s steps(12) infinite;
+   animation: spin-7 3s steps(12) infinite;
 
 }
 
 @keyframes spin-7 {
    0% { background-position:0 }
    100% { background-position: 1416px }
- }
+}
 
 
 /* ============================
@@ -1239,13 +1295,7 @@ footer div img{
    top: 440px;
    
 }
-/* Asegura que Xbox y el texto anterior permanezcan en la misma línea */
-.xbox-inline {
-   display: inline;
-}
 
 
-/* ============================
-   ESTILOS RESPONSIVE
-   ============================ */
+
 
